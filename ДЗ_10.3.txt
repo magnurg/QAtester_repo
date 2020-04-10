@@ -63,4 +63,5 @@
   from people
   join passport on passport.peopleid = people.id
   join cars on cars.ownerid = people.id
-  where people.firstname = 'Kate'
+  where people.firstname = 'Kate' 
+  1
