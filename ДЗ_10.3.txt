@@ -1,0 +1,34 @@
+Простые запросы
+1.select * from people
+  select * from passport
+  select * from license
+  select * from cars
+  
+2.select * from people where firstname = 'Ivan'
+  select * from people where firstname = 'Irina'
+
+3.select * from people where firstname = 'Ivan' and lastname = 'Kotov'
+
+4.select * from people where age = 26
+
+5.select * from people where age = 26 and gender = 'female'
+
+6.select * from cars where color = 'white'
+
+7.select * from cars where year_issue < 2001
+
+8.select * from cars where year_issue > 2000 and color = 'white'
+
+9.select owner from cars where model = 'audi'
+
+10.select * from cars where color in ('black', 'white')
+
+11.select * from cars where color in ('blue', 'yellow') and year_issue > 2016
+
+12.select * from cars order by year_issue
+   select * from cars order by year_issue desc
+   
+13.select * from people order by age   
+   select * from people order by age desc
+   
+14.select firstname, age from people order by age
