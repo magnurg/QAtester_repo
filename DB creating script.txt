@@ -1,0 +1,65 @@
+CREATE TABLE people
+(
+    id SERIAL PRIMARY KEY,
+    firstname CHARACTER VARYING(30),
+    lastname CHARACTER VARYING(30),
+    age INTEGER,
+    gender CHARACTER VARYING(30)
+);
+
+CREATE TABLE passport
+(
+    id SERIAL PRIMARY KEY,
+    series INTEGER,
+    number INTEGER,
+    code_p INTEGER,
+    peopleid INTEGER REFERENCES people (id)
+);
+
+CREATE TABLE license
+(
+    id SERIAL PRIMARY KEY,
+    series INTEGER,
+    number INTEGER,
+    code_g INTEGER,
+    passportid INTEGER REFERENCES passport (id)
+);
+
+CREATE TABLE cars
+(
+    id SERIAL PRIMARY KEY,
+    model CHARACTER VARYING(30),
+    color CHARACTER VARYING(30),
+    year_issue INTEGER,
+    owner CHARACTER VARYING(30),
+    ownerid INTEGER REFERENCES people (id)
+);
+
+INSERT INTO people VALUES (1, 'Ivan', 'Somov', 23, 'male');
+INSERT INTO people VALUES (3, 'Ivan', 'Kotov', 14, 'male');
+INSERT INTO people VALUES (5, 'Vika', 'Gromova', 45, 'female');
+INSERT INTO people VALUES (6, 'Irina', 'Stopova', 26, 'female');
+INSERT INTO people VALUES (2, 'Kate', 'Gromova', 35, 'female');
+INSERT INTO people VALUES (4, 'Irina', 'Hops', 26, 'female');
+
+INSERT INTO passport VALUES (1, 4007, 1234, 753-568, 1);
+INSERT INTO passport VALUES (2, 4000, 3456, 783-098, 2);
+INSERT INTO passport VALUES (3, 4034, 5646, 745-567, 3);
+INSERT INTO passport VALUES (4, 4001, 3423, 743-698, 4);
+INSERT INTO passport VALUES (5, 4023, 0987, 345-113, 5);
+INSERT INTO passport VALUES (6, 4566, 3345, 345-456, 6);
+
+INSERT INTO license VALUES (1, 12345, 54321, 345, 1);
+INSERT INTO license VALUES (2, 24534, 23567, 235, 2);
+INSERT INTO license VALUES (3, 23545, 57343, 266, 3);
+INSERT INTO license VALUES (4, 45786, 34675, 532, 4);
+INSERT INTO license VALUES (5, 77534, 57845, 184, 5);
+INSERT INTO license VALUES (6, 76456, 57435, 456, 6);
+
+INSERT INTO cars VALUES (1, 'bmw', 'black', 2019, 'Ivan', 1);
+INSERT INTO cars VALUES (3, 'audi', 'red', 1999, 'Ivan', 3);
+INSERT INTO cars VALUES (5, 'lada', 'white', 1998, 'Vika', 5);
+INSERT INTO cars VALUES (4, 'maseratti', 'yellow', 2017, 'Irina', 4);
+INSERT INTO cars VALUES (2, 'volvo', 'white', 2002, 'Kate', 2);
+INSERT INTO cars VALUES (6, 'Porsche', 'blue', 2017, 'Irina', 6);
+
