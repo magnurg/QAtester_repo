@@ -32,3 +32,35 @@
    select * from people order by age desc
    
 14.select firstname, age from people order by age
+
+Неявное объединение
+
+1.select * from people, passport where people.id = passport.peopleid
+
+3.select * from people, passport where people.firstname = 'Ivan' and people.id = passport.peopleid
+
+4.select people.firstname, passport.series from people, passport where people.id = passport.peopleid
+
+/JOIN
+
+1.select * from people join passport on people.id = passport.peopleid
+
+2.select * from people join cars on people.id = cars.ownerid
+
+3.select * from people join cars on people.id = cars.ownerid where people.firstname = 'Kate'
+
+4.select * from people join cars on people.id = cars.ownerid where people.firstname = 'Ivan' and cars.model = 'bmw'
+
+5.select people.firstname, cars.model from people join cars on people.id = cars.ownerid where people.firstname = 'Irina'
+
+6.select * 
+  from people 
+  join passport on passport.peopleid = people.id 
+  join cars on cars.ownerid = people.id 
+  where people.firstname = 'Ivan'
+  
+7.select people.lastname, passport.series, passport.number, cars.model, cars.year_issue
+  from people
+  join passport on passport.peopleid = people.id
+  join cars on cars.ownerid = people.id
+  where people.firstname = 'Kate'
